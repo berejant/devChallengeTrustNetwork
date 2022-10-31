@@ -1,0 +1,6169 @@
+{
+	"info": {
+		"_postman_id": "81c4af9e-28b7-41a9-883f-f561125e8626",
+		"name": "DevChallangeTrustNetwork",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "89669"
+	},
+	"item": [
+		{
+			"name": "BaseTests",
+			"item": [
+				{
+					"name": "Healthcheck",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"health\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/healthcheck",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Person Garry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"Garry\",\n    \"topics\": [\"books\", \"magic\", \"movies\"]\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Person Hermione",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"Hermione\",\n    \"topics\": [\"books\", \"magic\", \"movies\"]\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Person Rone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"Rone\",\n    \"topics\": [\"books\", \"magic\", \"movies\"]\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Trust Connections",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"Rone\": 10,\n   \"Hermione\": 10\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people/Garry/trust_connections",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people",
+								"Garry",
+								"trust_connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Trust Connections (error: not exist From person)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"Rone\": 10\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people/NotExistsPerson1/trust_connections",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people",
+								"NotExistsPerson1",
+								"trust_connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Trust Connections (error: not exists to Person)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"NotExistsPersonLol\": 10\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people/Garry/trust_connections",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people",
+								"Garry",
+								"trust_connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Trust Connections (error: wrong trust level - too big)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"Rone\": 20\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people/Garry/trust_connections",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people",
+								"Garry",
+								"trust_connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Trust Connections (error: wrong trust level - too small)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"Hermione\": 0\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people/Garry/trust_connections",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people",
+								"Garry",
+								"trust_connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Trust Connections (error: wrong trust level  - not number)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"Hermione\": \"2\"\n}\n"
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/people/Garry/trust_connections",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"people",
+								"Garry",
+								"trust_connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Voldemort is alieve from Garry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Gerry send message to Rone and Hermione\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.Garry.sort() || []).to.eql([",
+									"        \"Hermione\",",
+									"        \"Rone\",",
+									"    ]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Voldemort is alive!\",\n    \"topics\": [\"magic\"],\n\t\"from_person_id\": \"Garry\",\n    \"min_trust_level\": 5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/messages",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find path",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Gerry send message to Hermione or Rone\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.from).to.eql(\"Garry\")",
+									"",
+									"    pm.expect(jsonData.path.length).to.eql(1)",
+									"",
+									"    pm.expect(jsonData.path[0]).to.oneOf([\"Hermione\", \"Rone\"]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Voldemort is alive!\",\n    \"topics\": [\"magic\"],\n\t\"from_person_id\": \"Garry\",\n    \"min_trust_level\": 5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/path",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"path"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Broadcast Tests (/api/message)",
+			"item": [
+				{
+					"name": "Broadcast Test1 Check edges (trust)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Sender\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Person1\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Person2\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Person3\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Person4\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Person5\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Person6\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person7",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Person7\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person8",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test1_Person8\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test1_Person1\": 10,\n   \"Test1_Person2\": 10,\n   \"Test1_Person3\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test1_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test1_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test1_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test1_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test1_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test1_Person5\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test1_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test1_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test1_Person6\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test1_Person4/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test1_Person4",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Message",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Only contains valid Message Senders\", function () {",
+											"    pm.expect(Object.keys(jsonData)).to.eql([",
+											"        \"Test1_Person1\",",
+											"        \"Test1_Person2\",",
+											"        \"Test1_Person4\",",
+											"        \"Test1_Sender\"",
+											"    ])",
+											"});",
+											"",
+											"",
+											"pm.test(\"Sender sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test1_Sender.sort()).to.eql([",
+											"        \"Test1_Person1\",",
+											"        \"Test1_Person2\",",
+											"        \"Test1_Person3\"",
+											"    ])",
+											"});",
+											"",
+											"pm.test(\"Other persons sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test1_Person1.sort()).to.eql([\"Test1_Person4\"])",
+											"    pm.expect(jsonData.Test1_Person2.sort()).to.eql([\"Test1_Person5\"])",
+											"    pm.expect(jsonData.Test1_Person4.sort()).to.eql([\"Test1_Person6\"])",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test1 passed?\",\n    \"topics\": [\"books\"],\n\t\"from_person_id\": \"Test1_Sender\",\n    \"min_trust_level\": 3\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/messages",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Broadcast Test2 (check inverse trust not work)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test2_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test2_Person1\",\n    \"topics\": [\"Cooking\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test2_Person2\",\n    \"topics\": [\"Cooking\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test2_Person1\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test2_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test2_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test2_Sender\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test2_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test2_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Message",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Only contains valid Message Senders\", function () {",
+											"    pm.expect(Object.keys(jsonData)).to.eql([",
+											"        \"Test2_Sender\"",
+											"    ])",
+											"});",
+											"",
+											"",
+											"pm.test(\"Sender sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test2_Sender).to.eql([",
+											"        \"Test2_Person1\"",
+											"    ])",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test2 passed?\",\n    \"topics\": [\"Cooking\"],\n\t\"from_person_id\": \"Test2_Sender\",\n    \"min_trust_level\": 3\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/messages",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Broadcast Test3 (check trsut levels)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Person1\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Person2\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Person3\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Person4\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Person5\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Person6\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person7",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Person7\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person8",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test3_Person8\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test3_Person1\": 3,\n   \"Test3_Person2\": 10,\n   \"Test3_Person3\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test3_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test3_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test3_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test3_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test3_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test3_Person5\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test3_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test3_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test3_Person6\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test3_Person4/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test3_Person4",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Message",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Only contains valid Message Senders\", function () {",
+											"    pm.expect(Object.keys(jsonData)).to.eql([",
+											"        \"Test3_Person2\",",
+											"        \"Test3_Sender\"",
+											"    ])",
+											"});",
+											"",
+											"",
+											"pm.test(\"Sender sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test3_Sender.sort()).to.eql([",
+											"        \"Test3_Person2\",",
+											"        \"Test3_Person3\"",
+											"    ])",
+											"});",
+											"",
+											"pm.test(\"Other persons sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test3_Person2.sort()).to.eql([\"Test3_Person5\"])",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test3 passed?\",\n    \"topics\": [\"books\"],\n\t\"from_person_id\": \"Test3_Sender\",\n    \"min_trust_level\": 7\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/messages",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Broadcast Test4 (check topics filter)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Sender\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Person1\",\n    \"topics\": [\"cars\", \"sport\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Person2\",\n    \"topics\": [\"cars\", \"photography\", \"swiming\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Person3\",\n    \"topics\": [\"cars\", \"photography\", \"football\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Person4\",\n    \"topics\": [\"cars\", \"books\", \"photography\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Person5\",\n    \"topics\": [\"cars\", \"photography\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Person6\",\n    \"topics\": [\"cars\", \"books\", \"photography\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person7",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Person7\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person8",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test4_Person8\",\n    \"topics\": [\"cars\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test4_Person1\": 10,\n   \"Test4_Person2\": 10,\n   \"Test4_Person3\": 10,\n   \"Test4_Person7\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test4_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test4_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test4_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test4_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test4_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test4_Person5\": 10,\n   \"Test4_Person8\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test4_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test4_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test4_Person6\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test4_Person4/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test4_Person4",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Message",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Only contains valid Message Senders\", function () {",
+											"    pm.expect(Object.keys(jsonData)).to.eql([",
+											"        \"Test4_Person2\",",
+											"        \"Test4_Sender\"",
+											"    ])",
+											"});",
+											"",
+											"",
+											"pm.test(\"Sender sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test4_Sender.sort()).to.eql([",
+											"        \"Test4_Person2\",",
+											"        \"Test4_Person3\"",
+											"    ])",
+											"});",
+											"",
+											"pm.test(\"Other persons sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test4_Person2.sort()).to.eql([\"Test4_Person5\"])",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test4 passed?\",\n    \"topics\": [\"cars\", \"photography\"],\n\t\"from_person_id\": \"Test4_Sender\",\n    \"min_trust_level\": 7\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/messages",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Broadcast Test5 (check trust level filter + topics filter)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test5_Sender\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test5_Person1\",\n    \"topics\": [\"cars\", \"photography\", \"football\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test5_Person2\",\n    \"topics\": [\"cars\", \"photography\", \"football\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test5_Person3\",\n    \"topics\": [\"cars\", \"photography\", \"painting\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test5_Person4\",\n    \"topics\": [\"cars\", \"photography\", \"football\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test5_Person5\",\n    \"topics\": [\"cars\", \"photography\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test5_Person6\",\n    \"topics\": [\"cars\", \"sport\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person7",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test5_Person7\",\n    \"topics\": [\"cars\", \"photography\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test5_Person1\": 3,\n   \"Test5_Person2\": 7,\n   \"Test5_Person3\": 8,\n   \"Test5_Person6\": 9\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test5_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test5_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test5_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test5_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test5_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test5_Person5\": 9\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test5_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test5_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test5_Person6\": 7\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test5_Person4/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test5_Person4",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test5_Person7\": 8\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test5_Person6/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test5_Person6",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Message",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Only contains valid Message Senders\", function () {",
+											"    pm.expect(Object.keys(jsonData)).to.eql([",
+											"        \"Test5_Person2\",",
+											"        \"Test5_Sender\"",
+											"    ])",
+											"});",
+											"",
+											"",
+											"pm.test(\"Sender sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test5_Sender.sort()).to.eql([",
+											"        \"Test5_Person2\",",
+											"        \"Test5_Person3\"",
+											"    ])",
+											"});",
+											"",
+											"pm.test(\"Other persons sent valid messages\", function () {",
+											"    pm.expect(jsonData.Test5_Person2.sort()).to.eql([",
+											"        \"Test5_Person5\"",
+											"    ])",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test5 passed?\",\n    \"topics\": [\"cars\", \"photography\"],\n\t\"from_person_id\": \"Test5_Sender\",\n    \"min_trust_level\": 7\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/messages",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Broadcast Test6 (not spam check)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test6_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test6_Person1\",\n    \"topics\": [\"Cooking\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test6_Person2\",\n    \"topics\": [\"Cooking\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"Test6_Person3\",\n    \"topics\": [\"Cooking\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test6_Person1\": 10,\n   \"Test6_Person2\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test6_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test6_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test6_Person2\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test6_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test6_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"Test6_Person3\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/Test6_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"Test6_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Message",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Only contains valid Message Senders\", function () {",
+											"    pm.expect(Object.keys(jsonData)).to.eql([",
+											"        \"Test6_Person2\",",
+											"        \"Test6_Sender\"",
+											"    ])",
+											"});",
+											"",
+											"pm.test(\"Not duplicate Receivers\", function () {",
+											"    let uniqueReceivers = [];",
+											"",
+											"    for (const sender in jsonData) {",
+											"        for (receiver of jsonData[sender]) {",
+											"            pm.expect(uniqueReceivers.includes(receiver)).to.eql(false);",
+											"        }",
+											"    }",
+											"",
+											"});",
+											"",
+											"pm.test(\"Expected receivers\", function () {",
+											"    let receivers = Array.prototype.concat.call([], ...Object.values(jsonData)).sort();",
+											"    receivers = receivers.sort()",
+											"",
+											"    pm.expect(receivers.sort()).to.eql([",
+											"        \"Test6_Person1\",",
+											"        \"Test6_Person2\",",
+											"        \"Test6_Person3\"",
+											"    ])",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test6 passed?\",\n    \"topics\": [\"Cooking\"],\n\t\"from_person_id\": \"Test6_Sender\",\n    \"min_trust_level\": 3\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/messages",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Non-Broadcast Tests (/api/path)",
+			"item": [
+				{
+					"name": "Non-broadcast Test1 (check trust relation)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test1_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test1_Person1\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test1_Person2\",\n    \"topics\": [\"painting\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test1_Person3\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test1_Person4\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test1_Person1\": 10,\n   \"n_Test1_Person2\": 10,\n   \"n_Test1_Person3\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test1_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test1_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test1_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test1_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test1_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"From Sender\", function () {",
+											"    pm.expect(jsonData.from).to.eql(\"n_Test1_Sender\")",
+											"});",
+											"",
+											"",
+											"pm.test(\"Expectec path\", function () {",
+											"    pm.expect(jsonData.path).to.eql([",
+											"        \"n_Test1_Person3\"",
+											"    ]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test1 passed?\",\n    \"topics\": [\"books\"],\n\t\"from_person_id\": \"n_Test1_Sender\",\n    \"min_trust_level\": 5\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/path",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"path"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Non-broadcast Test2 (check inverse  trust is not wroking)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test2_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test2_Person1\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test2_Person2\",\n    \"topics\": [\"Cooking\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test2_Person3\",\n    \"topics\": [\"Cooking\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test2_Person1\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test2_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test2_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test2_Person3\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test2_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test2_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test2_Sender\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test2_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test2_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"From Sender\", function () {",
+											"    pm.expect(jsonData.from).to.eql(\"n_Test2_Sender\")",
+											"});",
+											"",
+											"",
+											"pm.test(\"Expectec path\", function () {",
+											"    pm.expect(jsonData.path).to.eql([",
+											"        \"n_Test2_Person1\",",
+											"        \"n_Test2_Person3\"",
+											"    ]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test2 passed?\",\n    \"topics\": [\"Cooking\"],\n\t\"from_person_id\": \"n_Test2_Sender\",\n    \"min_trust_level\": 5\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/path",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"path"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Non-broadcast Test3 (check trust relation levels)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test3_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test3_Person1\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test3_Person2\",\n    \"topics\": [\"swimming\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test3_Person3\",\n    \"topics\": [\"swimming\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test3_Person1\": 7,\n   \"n_Test3_Person2\": 3\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test3_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test3_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test3_Person3\": 8\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test3_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test3_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"From Sender\", function () {",
+											"    pm.expect(jsonData.from).to.eql(\"n_Test3_Sender\")",
+											"});",
+											"",
+											"",
+											"pm.test(\"Expectec path\", function () {",
+											"    pm.expect(jsonData.path).to.eql([",
+											"        \"n_Test3_Person1\",",
+											"        \"n_Test3_Person3\"",
+											"    ]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test3 passed?\",\n    \"topics\": [\"swimming\"],\n\t\"from_person_id\": \"n_Test3_Sender\",\n    \"min_trust_level\": 7\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/path",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"path"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Non-broadcast Test4 (check shortest path)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test4_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test4_Person1\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test4_Person2\",\n    \"topics\": [\"painting\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test4_Person3\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test4_Person4\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test4_Person5\",\n    \"topics\": [\"sport\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test4_Person6\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test4_Person1\": 10,\n   \"n_Test4_Person2\": 10,\n   \"n_Test4_Person3\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test4_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test4_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test4_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test4_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test4_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test4_Person5\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test4_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test4_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test4_Person6\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test4_Person3/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test4_Person3",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test4_Person5\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test4_Person4/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test4_Person4",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test4_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test4_Person6/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test4_Person6",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"From Sender\", function () {",
+											"    pm.expect(jsonData.from).to.eql(\"n_Test4_Sender\")",
+											"});",
+											"",
+											"",
+											"pm.test(\"Expectec path\", function () {",
+											"    pm.expect(jsonData.path).to.eql([",
+											"        \"n_Test4_Person2\",",
+											"        \"n_Test4_Person5\"",
+											"    ]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test4 passed?\",\n    \"topics\": [\"sport\"],\n\t\"from_person_id\": \"n_Test4_Sender\",\n    \"min_trust_level\": 5\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/path",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"path"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Non-broadcast Test5 (check shortest path with different trust level)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test5_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test5_Person1\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test5_Person2\",\n    \"topics\": [\"painting\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test5_Person3\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test5_Person4\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test5_Person5\",\n    \"topics\": [\"sport\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test5_Person6\",\n    \"topics\": [\"books\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test5_Person1\": 10,\n   \"n_Test5_Person2\": 10,\n   \"n_Test5_Person3\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test5_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test5_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test5_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test5_Person1/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test5_Person1",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test5_Person5\": 5\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test5_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test5_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test5_Person6\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test5_Person3/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test5_Person3",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person4 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test5_Person5\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test5_Person4/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test5_Person4",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person6 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test5_Person4\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test5_Person6/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test5_Person6",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"From Sender\", function () {",
+											"    pm.expect(jsonData.from).to.eql(\"n_Test5_Sender\")",
+											"});",
+											"",
+											"",
+											"pm.test(\"Expectec path\", function () {",
+											"    pm.expect(jsonData.path).to.eql([",
+											"        \"n_Test5_Person1\",",
+											"        \"n_Test5_Person4\",",
+											"        \"n_Test5_Person5\"",
+											"    ]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test5 passed?\",\n    \"topics\": [\"sport\"],\n\t\"from_person_id\": \"n_Test5_Sender\",\n    \"min_trust_level\": 7\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/path",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"path"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Non-broadcast Test6 (check no trust between matched people)",
+					"item": [
+						{
+							"name": "Create Sender",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test6_Sender\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test6_Person1\",\n    \"topics\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test6_Person2\",\n    \"topics\": [\"painting\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"n_Test6_Person3\",\n    \"topics\": [\"sport\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sender Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test6_Person1\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test6_Sender/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test6_Sender",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Person2 Trusts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"n_Test6_Person3\": 10\n}\n"
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/people/n_Test6_Person2/trust_connections",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"n_Test6_Person2",
+										"trust_connections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"From Sender\", function () {",
+											"    pm.expect(jsonData.from).to.eql(\"n_Test6_Sender\")",
+											"});",
+											"",
+											"",
+											"pm.test(\"Expectec path\", function () {",
+											"    pm.expect(jsonData.path).to.eql([]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Does Test6 passed?\",\n    \"topics\": [\"sport\"],\n\t\"from_person_id\": \"n_Test6_Sender\",\n    \"min_trust_level\": 3\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_HOST}}/api/path",
+									"host": [
+										"{{API_HOST}}"
+									],
+									"path": [
+										"api",
+										"path"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,16 @@
+$(API_HOST)/api/people POST {"id":"Garry","topics":["books","magic","movies"]}
+$(API_HOST)/api/people POST {"id":"Hermione","topics":["painting","magic","movies"]}
+$(API_HOST)/api/people POST {"id":"Rone","topics":["books","football","movies"]}
+$(API_HOST)/api/Garry/trust_connections POST {"Rone":10,"Hermione":10}
+$(API_HOST)/api/messages POST {"text":"Does Test1 passed?","topics":["books"],"from_person_id":"Test1_Sender","min_trust_level":3}
+$(API_HOST)/api/messages POST {"text":"Does Test2 passed?","topics":["Cooking"],"from_person_id":"Test2_Sender","min_trust_level":3}
+$(API_HOST)/api/messages POST {"text":"Does Test3 passed?","topics":["books"],"from_person_id":"Test3_Sender","min_trust_level":7}
+$(API_HOST)/api/messages POST {"text":"Does Test4 passed?","topics":["cars","photography"],"from_person_id":"Test4_Sender","min_trust_level":7}
+$(API_HOST)/api/messages POST {"text":"Does Test5 passed?","topics":["cars","photography"],"from_person_id":"Test5_Sender","min_trust_level":7}
+$(API_HOST)/api/messages POST {"text":"Does Test6 passed?","topics":["Cooking"],"from_person_id":"Test6_Sender","min_trust_level":3}
+$(API_HOST)/api/path POST {"text":"Does Test1 passed?","topics":["books"],"from_person_id":"n_Test1_Sender","min_trust_level":5}
+$(API_HOST)/api/path POST {"text":"Does Test2 passed?","topics":["Cooking"],"from_person_id":"n_Test2_Sender","min_trust_level":5}
+$(API_HOST)/api/path POST {"text":"Does Test3 passed?","topics":["swimming"],"from_person_id":"n_Test3_Sender","min_trust_level":7}
+$(API_HOST)/api/path POST {"text":"Does Test4 passed?","topics":["sport"],"from_person_id":"n_Test4_Sender","min_trust_level":5}
+$(API_HOST)/api/path POST {"text":"Does Test5 passed?","topics":["sport"],"from_person_id":"n_Test5_Sender","min_trust_level":7}
+$(API_HOST)/api/path POST {"text":"Does Test6 passed?","topics":["sport"],"from_person_id":"n_Test6_Sender","min_trust_level":3}

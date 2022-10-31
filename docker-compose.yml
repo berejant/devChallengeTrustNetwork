@@ -1,0 +1,73 @@
+version: '3.9'
+
+volumes:
+  arangodb:
+
+services:
+  arangodb:
+    image: arangodb/arangodb:${ARANGODB_VERSION:-3.9.3}
+    environment:
+      - ARANGO_NO_AUTH=1
+    ports:
+      - '8529:8529'
+    volumes:
+      - arangodb:/var/lib/arangodb3
+    healthcheck:
+      test: ["CMD", "wget", "-nv", "-t1", "--spider", "http://localhost:8529/_api/version"]
+      interval: 5s
+      timeout: 5s
+      retries: 2
+      start_period: 5s
+
+  api:
+    build:
+      context: src/
+    depends_on:
+      arangodb:
+        condition: service_healthy
+    ports:
+      - '8080:8080'
+    environment:
+      - DB_ENDPOINT=http://arangodb:8529
+      - DB_USER=root
+      - DB_PASSWORD=
+
+    healthcheck:
+      test: ["CMD", "wget", "-nv", "-t1", "--spider", "http://localhost:8080/healthcheck"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 1s
+
+  postman:
+    image: postman/newman:alpine
+    profiles:
+      - testing
+    command:
+      run DevChallangeTrustNetwork.postman_collection.json
+      -k -r cli
+      --env-var API_HOST=http://api:8080
+      --iteration-count 2
+    volumes:
+      - ./tests:/etc/newman
+    depends_on:
+      arangodb:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+
+  siege:
+    image: yokogawa/siege
+    profiles:
+      - testing
+    command: --concurrent=1000 --time=60S --internet --file /urls.txt
+    depends_on:
+      arangodb:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    volumes:
+      - ./siege/urls.txt:/urls.txt
+      - ./siege/log:/var/log
+    environment:
+      - API_HOST=http://api:8080
